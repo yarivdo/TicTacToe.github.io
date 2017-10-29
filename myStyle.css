@@ -19,8 +19,15 @@ table {
 
 }
 
-TD {
+td {
     border: 1px solid grey;
     padding: 25px;
+    width: 35px;
+
+}
+
+td:hover {
+    background-color: #6bced0;
+    cursor: pointer;
 
 }
