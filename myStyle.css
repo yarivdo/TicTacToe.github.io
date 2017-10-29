@@ -1,4 +1,26 @@
+body {
+    text-align: center;
+}
 h1 {
     font-family: Gill Sans, Copperplate, Verdana, Century Gothic, Arial;
     color: darkmagenta;
+}
+
+#mainArea {
+    display: inline-block;
+
+}
+
+table {
+    border: 2px solid black;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 2em;
+
+}
+
+TD {
+    border: 1px solid grey;
+    padding: 25px;
+
 }
