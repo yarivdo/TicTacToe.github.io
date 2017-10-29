@@ -1,15 +1,26 @@
 // Global variables
 var myCells;
 var turns;
-var numberOfRounds = 0;
+var numberOfRounds;
 
 
 $(document).ready(startHere);
 
 function startHere() {
 
+    initiateGame();
+
+    //This sets up the cells to be reactive to clicks
+    $('.cells').click(cellClicked);
+
+
+}
+
+function initiateGame() {
     //Set the turn
     turns = "X";
+    numberOfRounds = 0;
+
 
     // Restart the array
     myCells = {
@@ -23,10 +34,6 @@ function startHere() {
         "32": "",
         "33": ""
     };
-
-
-    //This sets up the cells to be reactive to clicks
-    $('.cells').click(cellClicked);
 
     //Populate the table
     populateTable();
@@ -78,7 +85,9 @@ function checkGame() {
     startingCell+10     startingCell+11  startingCell+12
     startingCell +20    startingCell+21  startingCell+22
     */
-    var startingCell = 11;
+
+    //These are basically all the possible combinations to win.
+    //They will be checked after each click
 
     checkRow(11);
     checkRow(21);
@@ -89,25 +98,7 @@ function checkGame() {
     checkColumn(13);
 
     checkDiagonal(11);
-    checkDiagonal2(31);
-
-
-
-
-
-    /*
-    if (myCells[startingCell] != "") {
-            if (myCells[startingCell] == myCells[startingCell + 1] && myCells[startingCell + 1] == myCells[startingCell + 2]) {
-                console.log("Checked for Row #1");
-            } else if (myCells[startingCell] == myCells[startingCell + 11] && myCells[startingCell + 11] == myCells[startingCell + 22]) {
-                console.log("checked for diagonal from 11 to 33");
-            } else if (myCells[startingCell] == myCells[startingCell + 10] && myCells[startingCell + 10] == myCells[startingCell + 20]) {
-                console.log("checked for column #1");
-            }
-        }
-    */
-
-
+    checkDiagonal_2(31);
 
 }
 
@@ -116,6 +107,8 @@ function checkRow(startingCell) {
     if (myCells[startingCell] != "") {
         if (myCells[startingCell] == myCells[startingCell + 1] && myCells[startingCell + 1] == myCells[startingCell + 2]) {
             console.log("Checked for Row #1");
+            alert("The game was won by the " + myCells[startingCell]);
+            startHere();
         }
     }
 }
@@ -124,6 +117,8 @@ function checkColumn(startingCell) {
     if (myCells[startingCell] != "") {
         if (myCells[startingCell] == myCells[startingCell + 10] && myCells[startingCell + 10] == myCells[startingCell + 20]) {
             console.log("checked for column #1");
+            alert("The game was won by the " + myCells[startingCell]);
+            startHere();
         }
     }
 }
@@ -132,17 +127,18 @@ function checkDiagonal(startingCell) {
     if (myCells[startingCell] != "") {
         if (myCells[startingCell] == myCells[startingCell + 11] && myCells[startingCell + 11] == myCells[startingCell + 22]) {
             console.log("checked for diagonal from 11 to 33");
+            alert("The game was won by the " + myCells[startingCell]);
+            startHere();
         }
     }
 }
 
-function checkDiagonal2(startingCell) {
+function checkDiagonal_2(startingCell) {
     if (myCells[startingCell] != "") {
-        console.log(myCells[startingCell]);
-         console.log(myCells[startingCell-9]);
-         console.log(myCells[startingCell-18]);
-        if (myCells[startingCell] == myCells[startingCell - 9] && myCells[startingCell] - 9 == myCells[startingCell - 18]) {
+        if (myCells[startingCell] == myCells[startingCell - 9] && myCells[startingCell - 9] == myCells[startingCell - 18]) {
             console.log('checked for diagonal from 31 to 13');
+            alert("The game was won by the " + myCells[startingCell]);
+            startHere();
         }
     }
 }
