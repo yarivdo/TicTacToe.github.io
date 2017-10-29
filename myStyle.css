@@ -16,14 +16,13 @@ table {
     border-collapse: collapse;
     text-align: center;
     font-size: 2em;
-    width: 90%;
 
 }
 
 td {
     border: 1px solid grey;
-    width: 27%;
-    height: 27%;
+    width: 55px;
+    height: 55px;
 
 }
 
